@@ -1,0 +1,17 @@
+.title-wrapper {
+    margin: 1rem;
+    color: var(--text-color);
+
+    .title{
+        font-size: 2rem;
+        margin-bottom: 10px;
+
+      
+    }
+
+    .subtitle {
+        font-size: 1.5rem;
+
+ 
+    }
+}

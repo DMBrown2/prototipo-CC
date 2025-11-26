@@ -1,0 +1,19 @@
+.juntada-page {
+    background-color: #95ddd8;
+}
+
+.contenedor-logo {
+    margin: 1rem;
+}
+
+.juntada-titu {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    font-size: var(font-size);
+    margin: 1rem;
+}
+
+.juntada-emoji {
+    font-size: 1.5rem;
+}

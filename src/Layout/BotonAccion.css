@@ -1,0 +1,33 @@
+.boton-accion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem;
+}
+
+.circulo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: var(--text-color);
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.2s;
+}
+
+.circulo:hover {
+  background-color: var(--primary-color);
+}
+
+.texto {
+  margin-top: 0.2rem;
+  font-size: 0.9rem;
+  color: var(--text-color);
+}
