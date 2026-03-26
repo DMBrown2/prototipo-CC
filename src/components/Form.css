@@ -1,0 +1,145 @@
+/* Form Container */
+.form-container {
+  max-width: 600px;
+  max-height: 400px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  overflow-y: auto;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Input Groups */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Individual Input Containers */
+.input-monto,
+.input-nombre,
+.input-item,
+.input-fecha,
+.input-para-quienes,
+.input-imagen {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Labels */
+label {
+  font-weight: 600;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+/* Input Fields */
+input[type="text"],
+input[type="number"],
+input[type="date"],
+input[type="file"] {
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus,
+input[type="file"]:focus {
+  outline: none;
+  border-color: #4CAF50;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+}
+
+/* Checkboxes */
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0;
+}
+
+input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: #4CAF50;
+}
+
+.checkbox-group label {
+  font-weight: 400;
+  margin: 0;
+  cursor: pointer;
+}
+
+/* Error Messages */
+.error-message {
+  padding: 0.75rem;
+  background-color: #ffebee;
+  border: 1px solid #f44336;
+  border-radius: 4px;
+  color: #c62828;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.error-text {
+  color: #f44336;
+  font-size: 0.85rem;
+  font-weight: 500;
+  display: block;
+  margin-top: 0.25rem;
+}
+
+/* Button Groups */
+.btn-registro,
+.btn-cancelar {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.btn-registro {
+  margin-top: 1rem;
+}
+
+.btn-cancelar {
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+}
+
+/* Disabled State */
+button:disabled,
+input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .form-container {
+    padding: 1rem;
+    margin: 1rem auto;
+  }
+
+  input[type="text"],
+  input[type="number"],
+  input[type="date"],
+  input[type="file"] {
+    font-size: 16px; /* Prevents zoom on mobile */
+  }
+}

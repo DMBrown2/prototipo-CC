@@ -1,0 +1,197 @@
+.seccion-gastos {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Summary Section */
+.gastos-summary {
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Gastos por Usuario */
+.gastos-por-usuario {
+  background-color: #f5f5f5;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border-left: 4px solid #4CAF50;
+}
+
+.gastos-por-usuario h3 {
+  margin-top: 0;
+  color: #333;
+  font-size: 1rem;
+}
+
+.gasto-item {
+  padding: 0.75rem;
+  margin: 0.5rem 0;
+  background-color: white;
+  border-radius: 4px;
+  border: 1px solid #e0e0e0;
+}
+
+.sin-gastos {
+  text-align: center;
+  color: #999;
+  font-style: italic;
+  padding: 1rem;
+}
+
+/* Detalle de Gastos */
+.gastos-detalle {
+  background-color: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+}
+
+.gastos-detalle h3 {
+  margin-top: 0;
+  color: #333;
+  border-bottom: 2px solid #4CAF50;
+  padding-bottom: 0.5rem;
+}
+
+.gastos-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.gasto-detail-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  margin: 0.5rem 0;
+  background-color: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+}
+
+.gasto-detail-item:hover {
+  transform: translateX(5px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.gasto-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-left: 1rem;
+}
+
+.btn-action {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  min-height: 40px;
+}
+
+.btn-edit {
+  color: #2196F3;
+  background-color: rgba(33, 150, 243, 0.1);
+}
+
+.btn-edit:hover {
+  background-color: rgba(33, 150, 243, 0.2);
+  color: #1976D2;
+}
+
+.btn-delete {
+  color: #f44336;
+  background-color: rgba(244, 67, 54, 0.1);
+}
+
+.btn-delete:hover {
+  background-color: rgba(244, 67, 54, 0.2);
+  color: #da190b;
+}
+
+.gasto-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1;
+}
+
+.gasto-usuario {
+  font-weight: 600;
+  color: #333;
+}
+
+.gasto-descripcion {
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.gasto-fecha {
+  color: #999;
+  font-size: 0.85rem;
+}
+
+.gasto-monto {
+  font-weight: 700;
+  color: #4CAF50;
+  font-size: 1.1rem;
+  min-width: 100px;
+  text-align: right;
+}
+
+.gasto-foto {
+  margin-left: 1rem;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .seccion-gastos {
+    padding: 1rem;
+  }
+
+  .gastos-summary {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+
+  .gasto-detail-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .gasto-monto {
+    align-self: flex-end;
+  }
+
+  .gasto-foto {
+    margin-left: 0;
+  }
+
+  .gasto-actions {
+    align-self: flex-end;
+  }
+}

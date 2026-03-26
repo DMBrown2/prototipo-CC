@@ -1,9 +1,12 @@
+import { useState } from "react"
 import Main from "../../Layout/Main"
 import Button from "../../Layout/BotonAccion"
 import Footer from "../../Layout/Footer"
 import Title from "../../components/Title"
 import JuntadasList from "../../components/JuntadasList"
+import JuntadaForm from "../NuevaJuntada/JuntadaForm"
 import { useNavigate } from "react-router-dom"
+import { useJuntada } from "../../hooks/useJuntada"
 import './Index.css'
 import '../../styles/styles.css'
 
@@ -18,27 +21,28 @@ import '../../styles/styles.css'
 //FOOTER
 
 export default function Home() {
-  const navigate = useNavigate();
-  const agregarJuntada = () => alert("Agregar nueva juntada");
+    const navigate = useNavigate();
+    const { juntadas, agregarJuntada } = useJuntada();
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const juntadas = [
-    { id: 1, emoji: "✈️", nombre: "Viaje Europa 2025" },
-  ];
+    const abrirModal = () => setIsModalOpen(true);
+    const cerrarModal = () => setIsModalOpen(false);
 
-  const compartir = (nombre) => {
-    alert(`Compartir juntada ${nombre}`);
-  };
+    const handleAgregarJuntada = (nuevaJuntada) => {
+      agregarJuntada(nuevaJuntada);
+      cerrarModal();
+    };
 
-  const irAJuntada = (id) => {
-    navigate(`/juntada/${id}`);
-  }
+    const compartir = (nombre) => alert(`Compartir juntada ${nombre}`);
+    const irAJuntada = (id) => navigate(`/juntada/${id}`);
+
 
     return (
         <div className="home">
             {/* titulo */}
             <Title 
             title="Bienvenid@ a Cuentas claras mantienen la amistad"
-            subtitle="La aplicación que te ayuda a organizar los gastos con tus amigos, para que no pierdas más amigos, ni plata." />
+            subtitle="La aplicación que te ayuda a organizar los gastos con tus amigos." />
 
             {/* Lista de Juntadas */}
         <div className="juntadas-container">
@@ -60,7 +64,17 @@ export default function Home() {
             <Main />
            
             {/* Boton nueva juntada */}
-            <Button texto="Agregar nueva juntada" onClick={agregarJuntada}/>
+            <Button texto="Agregar nueva juntada" onClick={abrirModal}/>
+
+ {isModalOpen && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <button className="close" onClick={cerrarModal}>X</button>
+            <JuntadaForm onSubmit={handleAgregarJuntada} />
+          </div>
+        </div>
+      )}
+
 
             {/* Footer */}
             <Footer />

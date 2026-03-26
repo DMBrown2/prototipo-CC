@@ -1,0 +1,169 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+input::placeholder {
+   font-family: var(--font-family);
+   padding: .2rem;
+}
+
+input[type="checkbox"] {
+  margin: 0.2rem 0.5rem 0.2rem 0.5rem;
+  cursor: pointer;
+}
+
+input[type="file"] {
+  margin: 0.2rem 0.5rem 0.2rem 0.5rem;
+  cursor: pointer;
+}
+
+input[type="date"] {
+  margin: 0.2rem 0.5rem 0.2rem 0.5rem;
+  cursor: pointer;
+}
+
+input[type="text"] {
+  margin: 0.2rem 0.5rem 0.2rem 0.5rem;
+  cursor: pointer;
+}
+
+input[type="number"] {
+  margin: 0.2rem 0.5rem 0.2rem 0.5rem;
+  cursor: pointer;
+}
+
+.btn-cancel {
+    position:absolute;
+   top: 10px;
+    right: 10px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+
+  &:hover {
+    background-color: var(--text-color);
+  }
+}
+
+/* Confirmation Dialog */
+.confirmation-dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.confirmation-dialog {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.confirmation-dialog h2 {
+  margin-top: 0;
+  color: #4CAF50;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.confirmation-dialog p {
+  color: #666;
+  font-size: 1rem;
+  margin: 0.75rem 0;
+  line-height: 1.5;
+}
+
+.confirmation-question {
+  font-weight: 600;
+  color: #333;
+  margin-top: 1rem !important;
+  margin-bottom: 1.5rem !important;
+}
+
+.confirmation-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.confirmation-buttons .btn {
+  flex: 1;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-yes {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.btn-yes:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
+}
+
+.btn-no {
+  background-color: #f44336;
+  color: white;
+}
+
+.btn-no:hover {
+  background-color: #da190b;
+  transform: scale(1.05);
+}

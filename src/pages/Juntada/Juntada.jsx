@@ -5,15 +5,14 @@ import DivisionesList from '../../components/DivisionesList'
 import FotosList from '../../components/FotosList'
 import NavBar from '../../Layout/NavBar'
 import { NavLink, useParams } from 'react-router-dom'
+import { useJuntada } from '../../hooks/useJuntada'
 import './Juntada.css'
 
 
 export default function Juntada() {
   const { id } = useParams();
-
-    const juntadaDetail = [
-    { id: 1, emoji: "✈️", nombre: "Viaje Europa 2025" },
-  ];
+  const { obtenerJuntada } = useJuntada();
+  const juntada = obtenerJuntada(id);
 
   // Definir la sección actual basada en la URL
   // Si no hay sección especificada, mostramos "gastos" por defecto
@@ -39,6 +38,10 @@ export default function Juntada() {
     }
   };
 
+  if (!juntada) {
+    return <div>Juntada no encontrada</div>;
+  }
+
   return (
   <div className='juntada-page'>
 
@@ -49,12 +52,10 @@ export default function Juntada() {
     </div>
 
     
-      {juntadaDetail.filter(j => j.id.toString() === id).map(j => (
-        <div key={j.id} className='juntada-titu'>
-          <span className='juntada-emoji'>{j.emoji}</span>
-          <h1 className='juntada-nombre'>{j.nombre}</h1>
-        </div>
-      ))}
+    <div className='juntada-titu'>
+      <span className='juntada-emoji'>{juntada.emoji}</span>
+      <h1 className='juntada-nombre'>{juntada.nombre}</h1>
+    </div>
 
    
 

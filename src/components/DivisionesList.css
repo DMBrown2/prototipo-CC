@@ -1,0 +1,211 @@
+.seccion-divisiones {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Resumen de Saldos */
+.balances-summary {
+  background-color: #f5f5f5;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border-left: 4px solid #667eea;
+}
+
+.balances-summary h3 {
+  margin-top: 0;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.balances-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.balance-card {
+  padding: 1rem;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  border: 2px solid #e0e0e0;
+  transition: all 0.3s ease;
+}
+
+.balance-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.balance-card.acreedor {
+  background-color: #e8f5e9;
+  border-color: #4CAF50;
+}
+
+.balance-card.deudor {
+  background-color: #ffebee;
+  border-color: #f44336;
+}
+
+.balance-card.cero {
+  background-color: #e3f2fd;
+  border-color: #2196F3;
+}
+
+.persona-nombre {
+  font-weight: 600;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+.balance-monto {
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.balance-monto.positivo {
+  color: #2e7d32;
+}
+
+.balance-monto.negativo {
+  color: #d32f2f;
+}
+
+/* Divisiones Detalle */
+.divisiones-detalle {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+}
+
+.divisiones-detalle h3 {
+  margin-top: 0;
+  color: #333;
+  border-bottom: 2px solid #667eea;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.divisiones-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.division-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.division-item:hover {
+  background-color: #f0f0f0;
+  transform: translateX(4px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.division-texto {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+}
+
+.deudor {
+  font-weight: 600;
+  color: #d32f2f;
+  padding: 0.5rem 0.75rem;
+  background-color: #ffebee;
+  border-radius: 4px;
+  min-width: 100px;
+  text-align: center;
+}
+
+.flecha {
+  color: #999;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin: 0 0.5rem;
+}
+
+.acreedor {
+  font-weight: 600;
+  color: #2e7d32;
+  padding: 0.5rem 0.75rem;
+  background-color: #e8f5e9;
+  border-radius: 4px;
+  min-width: 100px;
+  text-align: center;
+}
+
+.monto {
+  font-weight: 700;
+  color: #667eea;
+  font-size: 1.1rem;
+  min-width: 100px;
+  text-align: right;
+}
+
+.sin-divisiones {
+  text-align: center;
+  color: #4CAF50;
+  font-size: 1.1rem;
+  padding: 2rem;
+  background-color: #e8f5e9;
+  border-radius: 6px;
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .seccion-divisiones {
+    padding: 1rem;
+  }
+
+  .balances-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .balance-card {
+    padding: 0.75rem;
+    font-size: 0.9rem;
+  }
+
+  .division-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .division-texto {
+    width: 100%;
+    gap: 0.5rem;
+  }
+
+  .deudor,
+  .acreedor {
+    min-width: 80px;
+    font-size: 0.9rem;
+  }
+
+  .flecha {
+    opacity: 0.7;
+  }
+
+  .monto {
+    align-self: flex-end;
+  }
+}
