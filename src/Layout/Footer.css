@@ -1,0 +1,110 @@
+.footer {
+  background: var(--background-color);
+  color: var(--font-color);
+  padding: 1rem;
+  margin-top: 2rem;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Línea 1: Logo + Navigation */
+.footer-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+/* Logo */
+.footer-top a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  flex-shrink: 0;
+}
+
+.logo-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 700;
+  border: 2px solid white;
+  
+}
+
+.logo-text {
+  font-size: 0.9rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Navigation links */
+.footer-nav {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: nowrap;
+}
+
+.footer-link {
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--font-color);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.footer-link:hover {
+  background: rgba(255, 255, 255, 0.529);
+  border-color: white;
+}
+
+.footer-link:active {
+  transform: scale(0.98);
+}
+
+/* Línea 2: Tagline + Copyright */
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  font-size: 0.8rem;
+}
+
+.footer-tagline {
+  margin: 0;
+  opacity: 0.95;
+  font-weight: 500;
+}
+
+.footer-copyright {
+  margin: 0;
+  opacity: 0.8;
+}

@@ -1,0 +1,166 @@
+.juntada-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.juntada-modal-content {
+  background-color: white;
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 600px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.btn-cerrar-modal {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: #d32f2f;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.btn-cerrar-modal:hover {
+  background-color: #c62828;
+  transform: scale(1.1);
+}
+
+.btn-cerrar-modal:active {
+  transform: scale(0.95);
+}
+
+.emoji-input {
+  font-size: 2rem !important;
+  text-align: center;
+  padding: 0.1rem !important;
+  letter-spacing: 0.5rem;
+}
+
+.emoji-input::placeholder {
+  color: #999;
+  font-size: 0.875rem;
+  letter-spacing: normal;
+}
+
+.participante-input-group {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.participante-input-group input {
+  flex: 1;
+}
+
+.btn-agregar-participante {
+  padding: 0.75rem 1rem;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-agregar-participante:hover {
+  background-color: #45a049;
+}
+
+.btn-agregar-participante:active {
+  transform: scale(0.98);
+}
+
+.participantes-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #f9f9f9;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+}
+
+.participante-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background-color: #e3f2fd;
+  border-radius: 4px;
+  border: 1px solid #90caf9;
+  color: #1565c0;
+  font-weight: 500;
+}
+
+.btn-quitar {
+  background: none;
+  border: none;
+  color: #d32f2f;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.1rem;
+  padding: 0;
+  margin-left: 0.25rem;
+  transition: all 0.2s ease;
+}
+
+.btn-quitar:hover {
+  transform: scale(1.2);
+  color: #f44336;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .juntada-modal-content {
+    padding: 1.5rem;
+    width: 95%;
+  }
+
+  .btn-cerrar-modal {
+    width: 36px;
+    height: 36px;
+    font-size: 1.2rem;
+    top: 0.75rem;
+    right: 0.75rem;
+  }
+
+  .participante-input-group {
+    flex-direction: column;
+  }
+
+  .participante-input-group input {
+    width: 100%;
+  }
+
+  .btn-agregar-participante {
+    width: 100%;
+  }
+
+  .emoji-input {
+    font-size: 1.5rem !important;
+  }
+}

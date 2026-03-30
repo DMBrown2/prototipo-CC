@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import Modal from 'react-modal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrash, faPencil } from '@fortawesome/free-solid-svg-icons'
+import { faTrash, faPencil, faSearch, faXmark } from '@fortawesome/free-solid-svg-icons'
 import Button from '../Layout/BotonAccion'
 import GastoForm from '../pages/NuevoGasto/GastoForm';
 import { useJuntada } from '../hooks/useJuntada'
@@ -24,6 +24,7 @@ export default function GastosList() {
   const [gastoEditar, setGastoEditar] = useState(null);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
   const [gastoAEliminar, setGastoAEliminar] = useState(null);
+  const [fotoModal, setFotoModal] = useState({ isOpen: false, foto: null });
 
   const agregarGasto = () => setMostrarForm(true);
   const cerrarForm = () => {
@@ -47,6 +48,14 @@ export default function GastosList() {
   const handleCancelDelete = () => {
     setShowDeleteConfirm(false);
     setGastoAEliminar(null);
+  };
+
+  const handleVerFoto = (foto) => {
+    setFotoModal({ isOpen: true, foto });
+  };
+
+  const handleCerrarFoto = () => {
+    setFotoModal({ isOpen: false, foto: null });
   };
 
   const handleEditarGasto = (gasto) => {
@@ -104,10 +113,21 @@ export default function GastosList() {
                     <span className="gasto-usuario">👤 {gasto.usuario}</span>
                     <span className="gasto-descripcion">{gasto.descripcion}</span>
                     <span className="gasto-fecha">{gasto.fecha}</span>
+                    {gasto.paraQuienes && gasto.paraQuienes.length > 0 && (
+                      <span className="gasto-para-quienes">
+                        👥 Para: {gasto.paraQuienes.join(', ')}
+                      </span>
+                    )}
                   </div>
                   <span className="gasto-monto">${gasto.monto.toFixed(2)}</span>
                   {gasto.foto && (
-                    <span className="gasto-foto" title={gasto.foto}>📸</span>
+                    <button
+                      className="btn-ver-foto"
+                      onClick={() => handleVerFoto(gasto.foto)}
+                      title="Ver foto del ticket"
+                    >
+                      <FontAwesomeIcon icon={faSearch} />
+                    </button>
                   )}
                   <div className="gasto-actions">
                     <button
@@ -157,6 +177,30 @@ export default function GastosList() {
                 NO, CANCELAR
               </button>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* Modal de visualización de foto */}
+      {fotoModal.isOpen && fotoModal.foto && (
+        <div className="foto-modal-overlay" onClick={handleCerrarFoto}>
+          <div className="foto-modal-content" onClick={(e) => e.stopPropagation()}>
+            <button
+              className="btn-cerrar-foto"
+              onClick={handleCerrarFoto}
+              title="Cerrar"
+            >
+              <FontAwesomeIcon icon={faXmark} />
+            </button>
+            <p className="foto-nombre">{fotoModal.foto}</p>
+            <img
+              src={fotoModal.foto}
+              alt="Ticket"
+              className="foto-viewer"
+              onError={(e) => {
+                e.target.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="200" height="200"%3E%3Crect fill="%23f0f0f0" width="200" height="200"/%3E%3Ctext x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Arial" font-size="16" fill="%23999"%3EFoto no disponible%3C/text%3E%3C/svg%3E';
+              }}
+            />
           </div>
         </div>
       )}

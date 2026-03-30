@@ -21,10 +21,16 @@
     text-transform: none;
 }
 
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
 html {
   /* background-color: var(--background-color); */
   color: var(--text-color);
   font-family: var(--font-family);
+
 }
 
 

@@ -7,6 +7,7 @@ import JuntadasList from "../../components/JuntadasList"
 import JuntadaForm from "../NuevaJuntada/JuntadaForm"
 import { useNavigate } from "react-router-dom"
 import { useJuntada } from "../../hooks/useJuntada"
+import '../../components/Form.css'
 import './Index.css'
 import '../../styles/styles.css'
 
@@ -22,31 +23,58 @@ import '../../styles/styles.css'
 
 export default function Home() {
     const navigate = useNavigate();
-    const { juntadas, agregarJuntada } = useJuntada();
+    const { juntadas, eliminarJuntada } = useJuntada();
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [juntadaEditar, setJuntadaEditar] = useState(null);
+    const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+    const [juntadaAEliminar, setJuntadaAEliminar] = useState(null);
 
     const abrirModal = () => setIsModalOpen(true);
-    const cerrarModal = () => setIsModalOpen(false);
-
-    const handleAgregarJuntada = (nuevaJuntada) => {
-      agregarJuntada(nuevaJuntada);
-      cerrarModal();
+    const cerrarModal = () => {
+      setIsModalOpen(false);
+      setJuntadaEditar(null);
     };
 
     const compartir = (nombre) => alert(`Compartir juntada ${nombre}`);
     const irAJuntada = (id) => navigate(`/juntada/${id}`);
+
+    const handleEditarJuntada = (juntada) => {
+      setJuntadaEditar(juntada);
+      setIsModalOpen(true);
+    };
+
+    const handleEliminarJuntada = (juntada) => {
+      setJuntadaAEliminar(juntada);
+      setShowDeleteConfirm(true);
+    };
+
+    const handleConfirmDelete = () => {
+      if (juntadaAEliminar) {
+        eliminarJuntada(juntadaAEliminar.id);
+        setShowDeleteConfirm(false);
+        setJuntadaAEliminar(null);
+      }
+    };
+
+    const handleCancelDelete = () => {
+      setShowDeleteConfirm(false);
+      setJuntadaAEliminar(null);
+    };
 
 
     return (
         <div className="home">
             {/* titulo */}
             <Title 
-            title="Bienvenid@ a Cuentas claras mantienen la amistad"
-            subtitle="La aplicación que te ayuda a organizar los gastos con tus amigos." />
+            title ="Bienvenid@ a Cuentas Claras (para mantener la amistad)"
+            subtitle="La aplicación que te ayuda a organizar tus gastos."/>
 
+            <Title 
+            title="Mis juntadas"/>
+
+                        
             {/* Lista de Juntadas */}
-        <div className="juntadas-container">
-           <h1>Mis juntadas</h1>
+        <div className="juntadas-wrapper">
             <div className="juntadas-list">
             {juntadas.map((j) => (
               <JuntadasList 
@@ -55,6 +83,8 @@ export default function Home() {
                 nombre={j.nombre}
                 onShare={() => compartir(j.nombre)}
                 onClick={() => irAJuntada(j.id)}
+                onEdit={() => handleEditarJuntada(j)}
+                onDelete={() => handleEliminarJuntada(j)}
               />
             ))}
             </div>
@@ -66,15 +96,34 @@ export default function Home() {
             {/* Boton nueva juntada */}
             <Button texto="Agregar nueva juntada" onClick={abrirModal}/>
 
- {isModalOpen && (
-        <div className="modal-overlay">
-          <div className="modal-content">
-            <button className="close" onClick={cerrarModal}>X</button>
-            <JuntadaForm onSubmit={handleAgregarJuntada} />
-          </div>
-        </div>
-      )}
+            {isModalOpen && <JuntadaForm onClose={cerrarModal} juntadaEditar={juntadaEditar} />}
 
+            {/* Diálogo de confirmación de eliminación */}
+            {showDeleteConfirm && juntadaAEliminar && (
+              <div className="confirmation-dialog-overlay">
+                <div className="confirmation-dialog">
+                  <h2>⚠️ Eliminar juntada</h2>
+                  <p>
+                    ¿Estás seguro de que queres eliminar la juntada <strong>{juntadaAEliminar.emoji} {juntadaAEliminar.nombre}</strong>?
+                  </p>
+                  <p className="confirmation-question">Esta acción no se puede deshacer.</p>
+                  <div className="confirmation-buttons">
+                    <button
+                      className="btn btn-yes"
+                      onClick={handleConfirmDelete}
+                    >
+                      SÍ, ELIMINAR
+                    </button>
+                    <button
+                      className="btn btn-no"
+                      onClick={handleCancelDelete}
+                    >
+                      NO, CANCELAR
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
 
             {/* Footer */}
             <Footer />

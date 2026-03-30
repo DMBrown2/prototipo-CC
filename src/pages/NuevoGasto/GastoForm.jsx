@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Title from '../../components/Title'
 import '../../components/Form.css'
+import './GastoForm.css'
 import React, { useState, useEffect } from 'react'
 import BotonAccion from '../../Layout/BotonAccion'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
@@ -293,16 +294,17 @@ export default function GastoForm({ onClose, gastoEditar = null }) {
               {/* Quién pagó */}
               <div className="input-nombre">
                 <label htmlFor="usuario">Quién pagó? </label>
-                <input
-                  type="text"
+                <select
                   name="usuario"
                   id="usuario"
-                  placeholder="Nombre y Apellido"
-                  minLength="2"
-                  maxLength="120"
                   value={formData.usuario}
                   onChange={handleInputChange}
-                />
+                >
+                  <option value="">Selecciona un participante</option>
+                  {participantes.map(p => (
+                    <option key={p} value={p}>{p}</option>
+                  ))}
+                </select>
                 {errors.usuario && <span className="error-text">{errors.usuario}</span>}
               </div>
 

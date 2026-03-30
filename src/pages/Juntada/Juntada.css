@@ -1,9 +1,39 @@
 .juntada-page {
     background-color: #95ddd8;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.juntada-content {
+    flex: 1;
 }
 
 .contenedor-logo {
-    margin: 1rem;
+    margin: 0;
+    padding: 0.75rem 1rem;
+}
+
+.nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    background-color: var(--text-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.nav-link:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .juntada-titu {

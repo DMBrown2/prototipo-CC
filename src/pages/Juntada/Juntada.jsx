@@ -4,6 +4,7 @@ import GastosList from '../../components/GastosList'
 import DivisionesList from '../../components/DivisionesList'
 import FotosList from '../../components/FotosList'
 import NavBar from '../../Layout/NavBar'
+import Footer from '../../Layout/Footer'
 import { NavLink, useParams } from 'react-router-dom'
 import { useJuntada } from '../../hooks/useJuntada'
 import './Juntada.css'
@@ -44,27 +45,29 @@ export default function Juntada() {
 
   return (
   <div className='juntada-page'>
+    <div className='juntada-content'>
+      <div className="contenedor-logo">
+          <NavLink to="/" className="nav-link">
+         <FontAwesomeIcon icon={faArrowLeft} /> Volver a inicio
+          </NavLink>
+      </div>
 
-    <div className="contenedor-logo">
-        <NavLink to="/" className="nav-link">
-       <FontAwesomeIcon icon={faArrowLeft} /> Volver a inicio
-        </NavLink>
+      
+      <div className='juntada-titu'>
+        <span className='juntada-emoji'>{juntada.emoji}</span>
+        <h1 className='juntada-nombre'>{juntada.nombre}</h1>
+      </div>
+
+     
+
+      {/* NavBar - GASTOS | DIVISIONES | FOTOS */}
+      <NavBar juntadaId={id} />
+
+      {/* Renderizar la sección según lo que esté activo en el NavBar */}
+      {renderSection()}
     </div>
 
-    
-    <div className='juntada-titu'>
-      <span className='juntada-emoji'>{juntada.emoji}</span>
-      <h1 className='juntada-nombre'>{juntada.nombre}</h1>
-    </div>
-
-   
-
-    {/* NavBar - GASTOS | DIVISIONES | FOTOS */}
-    <NavBar juntadaId={id} />
-
-    {/* Renderizar la sección según lo que esté activo en el NavBar */}
-    {renderSection()}
-
+    <Footer />
   </div>
   )
 }

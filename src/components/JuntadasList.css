@@ -2,10 +2,11 @@
 .juntada-container{
   display: flex;
   align-items: center;
-  justify-content: start;
-  gap: 2rem;
-  margin: 1rem 0;
-
+  justify-content: flex-start;
+  gap: 1rem;
+ margin: 0 1rem 1rem 1rem;
+  /* border: #2196F3 1px solid; */
+}
 
 .juntada-item {
   display: flex;
@@ -14,49 +15,132 @@
   background-color: var(--secondary-color);
   border-radius: 10px;
   padding: 0.8rem;
-  /* margin: 1rem 1rem 0 0; */
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 300px;
   height: 55px;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-    cursor: pointer;
-  }
-  
-  .emoji {
-    font-size: 1.8rem;
-    margin-right: 0.8rem;
-  }
-  
-  .nombre {
-    flex-grow: 1;
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: var(--text-color);
-    font-family: var(--font-family);
-  }
+  cursor: pointer;
+}
+
+.juntada-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.emoji {
+  font-size: 1.8rem;
+  margin-right: 0.8rem;
+}
+
+.nombre {
+  flex-grow: 1;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text-color);
+  font-family: var(--font-family);
+}
+
+.juntada-actions {
+  display: flex;
+  gap: 0.2rem;
+  align-items: center;
+}
+
+.btn-action {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.2rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  min-height: 40px;
+}
+
+.btn-edit-juntada {
+  color: #2196F3;
+  background-color: rgba(33, 150, 243, 0.1);
+}
+
+.btn-edit-juntada:hover {
+  background-color: rgba(33, 150, 243, 0.2);
+  color: #1976D2;
+  transform: scale(1.05);
+}
+
+.btn-delete-juntada {
+  color: #f44336;
+  background-color: rgba(244, 67, 54, 0.1);
+}
+
+.btn-delete-juntada:hover {
+  background-color: rgba(244, 67, 54, 0.2);
+  color: #da190b;
+  transform: scale(1.05);
 }
 
 .btn-compartir {
-  background-color: var(--text-color);
-  border-radius: 10px;
-  color: white;
-  font-size: 0.9rem;
-  width: 50px;
-  height: 50px;
-  cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-
-    &:hover {
-    background-color: var(--primary-color);
-    border: none;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-    }
+  color: var(--secondary-color);
+  background-color: none;
 }
 
+.btn-compartir:hover {
+  background-color: #99e4dfb8;
+  color: #3fa7a0;;
+  transform: scale(1.05);
 }
+
+/* Responsive */
+@media (max-width: 460px) {
+  .juntada-container {
+    flex-wrap: nowrap;
+    gap: 0.5rem;
+    min-width: 0;
+  }
+
+  .juntada-item {
+    flex: 1;
+    min-width: 0;
+    max-width: none;
+    height: 50px;
+    padding: 0.6rem;
+  }
+
+  .emoji {
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+  }
+
+  .nombre {
+    font-size: 0.95rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .juntada-actions {
+    gap: 0;
+    flex-shrink: 0;
+  }
+
+  .btn-action {
+    min-width: 32px;
+    min-height: 32px;
+    font-size: 0.85rem;
+    padding: 0;
+  }
+
+  .btn-compartir {
+    min-width: 26px;
+    min-height: 26px;
+    width: 36px;
+    height: 36px;
+    font-size: 0.7rem;
+  }
+}
+

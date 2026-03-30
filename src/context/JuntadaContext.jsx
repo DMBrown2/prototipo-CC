@@ -80,6 +80,18 @@ export function JuntadaProvider({ children }) {
     return juntadas.find(j => j.id === parseInt(id));
   };
 
+  const eliminarJuntada = (juntadaId) => {
+    setJuntadas(juntadas.filter(j => j.id !== juntadaId));
+  };
+
+  const actualizarJuntada = (juntadaId, juntadaActualizada) => {
+    setJuntadas(juntadas.map(j =>
+      j.id === juntadaId
+        ? { ...j, ...juntadaActualizada }
+        : j
+    ));
+  };
+
   return (
     <JuntadaContext.Provider value={{ 
       juntadas, 
@@ -87,7 +99,9 @@ export function JuntadaProvider({ children }) {
       agregarGasto,
       eliminarGasto,
       actualizarGasto,
-      obtenerJuntada 
+      obtenerJuntada,
+      eliminarJuntada,
+      actualizarJuntada 
     }}>
       {children}
     </JuntadaContext.Provider>

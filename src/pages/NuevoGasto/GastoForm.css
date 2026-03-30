@@ -51,6 +51,27 @@ input[type="number"] {
   cursor: pointer;
 }
 
+select {
+  margin: 0.2rem 0.5rem 0.2rem 0.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+}
+
+select:hover {
+  border-color: #999;
+}
+
+select:focus {
+  outline: none;
+  border-color: #4CAF50;
+  box-shadow: 0 0 4px rgba(76, 175, 80, 0.4);
+}
+
 .btn-cancel {
     position:absolute;
    top: 10px;
