@@ -6,6 +6,7 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    overflow-x: hidden;
 }
 
 .juntadas-wrapper {
@@ -15,5 +16,12 @@
 .home > button {
     align-self: center;
     margin: 0.5rem 0 0 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .home > button {
+    margin: 0.25rem 0 0 0;
+  }
 }
 

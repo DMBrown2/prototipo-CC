@@ -82,7 +82,7 @@ export default function JuntadaForm({ onClose, juntadaEditar = null }) {
       nuevosErrors.nombre = 'Ingresa un nombre para la juntada';
     }
     if (formData.participantes.length === 0) {
-      nuevosErrors.participantes = 'Agrega al menos un participante';
+      nuevosErrors.participantes = 'Suma al menos un participante';
     }
 
     if (Object.keys(nuevosErrors).length > 0) {
@@ -189,7 +189,7 @@ export default function JuntadaForm({ onClose, juntadaEditar = null }) {
                       className="btn-agregar-participante"
                       onClick={handleAgregarParticipante}
                     >
-                      + Agregar
+                      + Sumar
                     </button>
                   </div>
                   {errors.participante && <span className="error-text">{errors.participante}</span>}
@@ -218,7 +218,8 @@ export default function JuntadaForm({ onClose, juntadaEditar = null }) {
 
               <div className="btn-registro">
                 <BotonAccion
-                  texto={isSubmitting ? (juntadaEditar ? 'Actualizando...' : 'Creando...') : (juntadaEditar ? '✓ Actualizar' : '+ Crear juntada')}
+                  signo={juntadaEditar ? '✓' : '+'}
+                  texto={isSubmitting ? (juntadaEditar ? 'Actualizando...' : 'Creando...') : (juntadaEditar ? 'Actualizar' : 'Crear juntada')}
                   type="submit"
                   disabled={isSubmitting}
                 />

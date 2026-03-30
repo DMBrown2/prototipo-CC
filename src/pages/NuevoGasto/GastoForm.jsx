@@ -221,7 +221,7 @@ export default function GastoForm({ onClose, gastoEditar = null }) {
   return (
     <>
       <main>
-        <Title title={gastoEditar ? "Editar gasto" : "Agregar nuevo gasto"} />
+        <Title title={gastoEditar ? "Editar gasto" : "Sumar nuevo gasto"} />
 
         {showConfirmation && lastAddedGasto && (
           <div className="confirmation-dialog-overlay">
@@ -244,11 +244,11 @@ export default function GastoForm({ onClose, gastoEditar = null }) {
                 </>
               ) : (
                 <>
-                  <h2>✅ ¡Gasto agregado!</h2>
+                  <h2>✅ ¡Gasto sumado!</h2>
                   <p>
-                    Agregaste gasto de <strong>${lastAddedGasto.monto.toFixed(2)}</strong> por <strong>{lastAddedGasto.descripcion}</strong> pagado por <strong>{lastAddedGasto.usuario}</strong>.
+                    Sumaste gasto de <strong>${lastAddedGasto.monto.toFixed(2)}</strong> por <strong>{lastAddedGasto.descripcion}</strong> pagado por <strong>{lastAddedGasto.usuario}</strong>.
                   </p>
-                  <p className="confirmation-question">¿Queres agregar un gasto más?</p>
+                  <p className="confirmation-question">¿Queres sumar otro gasto?</p>
                   <div className="confirmation-buttons">
                     <button
                       className="btn btn-yes"
@@ -372,7 +372,8 @@ export default function GastoForm({ onClose, gastoEditar = null }) {
 
             <div className="btn-registro">
               <BotonAccion
-                texto={isSubmitting ? (gastoEditar ? 'Actualizando...' : 'Agregando...') : (gastoEditar ? 'Actualizar gasto' : 'Sumar gasto')}
+                signo={gastoEditar ? '✓' : '+'}
+                texto={isSubmitting ? (gastoEditar ? 'Actualizando...' : 'Sumando...') : (gastoEditar ? 'Actualizar gasto' : 'Sumar gasto')}
                 type="submit"
                 disabled={isSubmitting || showConfirmation}
               />

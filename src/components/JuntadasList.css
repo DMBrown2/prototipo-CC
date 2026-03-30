@@ -96,11 +96,12 @@
 }
 
 /* Responsive */
-@media (max-width: 460px) {
+@media (max-width: 768px) {
   .juntada-container {
     flex-wrap: nowrap;
     gap: 0.5rem;
     min-width: 0;
+    margin: 0 0.75rem 0.75rem 0.75rem;
   }
 
   .juntada-item {

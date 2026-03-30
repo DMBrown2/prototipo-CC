@@ -3,6 +3,7 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    overflow-x: hidden;
 }
 
 .juntada-content {
@@ -46,4 +47,20 @@
 
 .juntada-emoji {
     font-size: 1.5rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contenedor-logo {
+    padding: 0.5rem 0.75rem;
+  }
+
+  .juntada-titu {
+    margin: 0.75rem 0.5rem;
+  }
+
+  .nav-link {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.85rem;
+  }
 }

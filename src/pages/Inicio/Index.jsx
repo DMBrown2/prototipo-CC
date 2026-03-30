@@ -94,7 +94,8 @@ export default function Home() {
             <Main />
            
             {/* Boton nueva juntada */}
-            <Button texto="Agregar nueva juntada" onClick={abrirModal}/>
+            <Button signo="+" texto="Sumar nueva juntada" onClick={abrirModal}
+            />
 
             {isModalOpen && <JuntadaForm onClose={cerrarModal} juntadaEditar={juntadaEditar} />}
 

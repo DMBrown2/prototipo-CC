@@ -152,7 +152,7 @@ export default function GastosList() {
         )}
       </div>
 
-      <Button texto="Agregar gasto" onClick={agregarGasto} />
+      <Button signo="+" texto="Sumar gasto" onClick={agregarGasto} />
 
       {/* Diálogo de confirmación de eliminación */}
       {showDeleteConfirm && gastoAEliminar && (
