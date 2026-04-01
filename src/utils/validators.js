@@ -105,15 +105,23 @@ export const validarFoto = (file) => {
     return { isValid: true, error: '' };
   }
   
-  const tiposPermitidos = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
-  if (!tiposPermitidos.includes(file.type)) {
-    return { isValid: false, error: 'Solo se permiten imágenes (JPEG, PNG, GIF, WebP)' };
+  // Si es un data URL (string), considerarlo válido
+  if (typeof file === 'string' && file.startsWith('data:image/')) {
+    return { isValid: true, error: '' };
   }
   
-  // Máximo 5MB
-  const maxSize = 5 * 1024 * 1024;
-  if (file.size > maxSize) {
-    return { isValid: false, error: 'La imagen no puede ser mayor a 5MB' };
+  // Si es un File object
+  if (file instanceof File) {
+    const tiposPermitidos = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+    if (!tiposPermitidos.includes(file.type)) {
+      return { isValid: false, error: 'Solo se permiten imágenes (JPEG, PNG, GIF, WebP)' };
+    }
+    
+    // Máximo 5MB
+    const maxSize = 5 * 1024 * 1024;
+    if (file.size > maxSize) {
+      return { isValid: false, error: 'La imagen no puede ser mayor a 5MB' };
+    }
   }
   
   return { isValid: true, error: '' };

@@ -1,3 +1,8 @@
+/* ============================================
+   JUNTADA FORM - Estilos Específicos
+   ============================================ */
+
+/* Modal Overlay y Content - Específicos de JuntadaForm */
 .juntada-modal-overlay {
   position: fixed;
   top: 0;
@@ -27,6 +32,7 @@
   margin-top: 1.5rem;
 }
 
+/* Close Button */
 .btn-cerrar-modal {
   position: absolute;
   top: 1rem;
@@ -55,6 +61,7 @@
   transform: scale(0.95);
 }
 
+/* Emoji Input */
 .emoji-input {
   font-size: 2rem !important;
   text-align: center;
@@ -68,6 +75,7 @@
   letter-spacing: normal;
 }
 
+/* Participantes Section */
 .participante-input-group {
   display: flex;
   gap: 0.5rem;
@@ -137,11 +145,14 @@
   color: #f44336;
 }
 
-/* Responsive */
+/* ============================================
+   RESPONSIVE
+   ============================================ */
 @media (max-width: 768px) {
   .juntada-modal-content {
     padding: 1.5rem;
     width: 95%;
+    box-sizing: border-box;
   }
 
   .btn-cerrar-modal {
@@ -158,13 +169,50 @@
 
   .participante-input-group input {
     width: 100%;
+    box-sizing: border-box;
   }
 
   .btn-agregar-participante {
     width: 100%;
+    box-sizing: border-box;
   }
 
   .emoji-input {
     font-size: 1.5rem !important;
+  }
+}
+
+@media (max-width: 500px) {
+  .juntada-modal-content {
+    padding: 1rem;
+    width: 98%;
+    box-sizing: border-box;
+    margin: 0 auto;
+  }
+
+  .juntada-modal-content main {
+    margin-top: 1rem;
+  }
+
+  .btn-cerrar-modal {
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
+    top: 0.5rem;
+    right: 0.5rem;
+  }
+
+  .emoji-input {
+    font-size: 1.2rem !important;
+  }
+
+  .participantes-list {
+    padding: 0.75rem;
+    gap: 0.5rem;
+  }
+
+  .participante-item {
+    padding: 0.4rem 0.5rem;
+    font-size: 0.9rem;
   }
 }

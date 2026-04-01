@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import Modal from 'react-modal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrash, faPencil, faSearch, faXmark } from '@fortawesome/free-solid-svg-icons'
+import { faTrash, faPencil, faCamera, faXmark } from '@fortawesome/free-solid-svg-icons'
 import Button from '../Layout/BotonAccion'
 import GastoForm from '../pages/NuevoGasto/GastoForm';
 import { useJuntada } from '../hooks/useJuntada'
@@ -115,7 +115,12 @@ export default function GastosList() {
                     <span className="gasto-fecha">{gasto.fecha}</span>
                     {gasto.paraQuienes && gasto.paraQuienes.length > 0 && (
                       <span className="gasto-para-quienes">
-                        👥 Para: {gasto.paraQuienes.join(', ')}
+                        👥 Para: {
+                          gasto.paraQuienes.length === juntada.participantes.length &&
+                          juntada.participantes.every(p => gasto.paraQuienes.includes(p))
+                            ? 'Tod@s'
+                            : gasto.paraQuienes.join(', ')
+                        }
                       </span>
                     )}
                   </div>
@@ -126,7 +131,7 @@ export default function GastosList() {
                       onClick={() => handleVerFoto(gasto.foto)}
                       title="Ver foto del ticket"
                     >
-                      <FontAwesomeIcon icon={faSearch} />
+                      <FontAwesomeIcon icon={faCamera} />
                     </button>
                   )}
                   <div className="gasto-actions">
@@ -181,6 +186,15 @@ export default function GastosList() {
         </div>
       )}
 
+      <Modal 
+        isOpen={mostrarForm} 
+        onRequestClose={cerrarForm}
+        className="modal-content"
+        overlayClassName="modal-overlay"
+      >
+        <GastoForm onClose={cerrarForm} gastoEditar={gastoEditar} />
+      </Modal>
+
       {/* Modal de visualización de foto */}
       {fotoModal.isOpen && fotoModal.foto && (
         <div className="foto-modal-overlay" onClick={handleCerrarFoto}>
@@ -192,7 +206,6 @@ export default function GastosList() {
             >
               <FontAwesomeIcon icon={faXmark} />
             </button>
-            <p className="foto-nombre">{fotoModal.foto}</p>
             <img
               src={fotoModal.foto}
               alt="Ticket"
@@ -204,15 +217,6 @@ export default function GastosList() {
           </div>
         </div>
       )}
-
-      <Modal 
-        isOpen={mostrarForm} 
-        onRequestClose={cerrarForm}
-        className="modal-content"
-        overlayClassName="modal-overlay"
-      >
-        <GastoForm onClose={cerrarForm} gastoEditar={gastoEditar} />
-      </Modal>
     </div>
   )
 }

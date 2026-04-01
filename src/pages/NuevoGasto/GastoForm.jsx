@@ -7,7 +7,7 @@ import BotonAccion from '../../Layout/BotonAccion'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import { useJuntada } from '../../hooks/useJuntada'
 import { useNavigate, useParams } from 'react-router-dom'
-import { validarFormularioGasto } from '../../utils/validators'
+import { validarFormularioGasto, validarFoto } from '../../utils/validators'
 
 export default function GastoForm({ onClose, gastoEditar = null }) {
   const navigate = useNavigate();
@@ -91,11 +91,35 @@ export default function GastoForm({ onClose, gastoEditar = null }) {
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
-    setFormData(prev => ({
-      ...prev,
-      foto: file
-    }));
-    if (errors.foto) {
+    if (file) {
+      // Validar el archivo primero
+      const validacion = validarFoto(file);
+      if (!validacion.isValid) {
+        setErrors(prev => ({
+          ...prev,
+          foto: validacion.error
+        }));
+        return;
+      }
+      
+      // Si es válido, convertir a base64
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        setFormData(prev => ({
+          ...prev,
+          foto: event.target.result // Data URL en base64
+        }));
+      };
+      reader.onerror = () => {
+        setErrors(prev => ({
+          ...prev,
+          foto: 'Error al leer el archivo'
+        }));
+      };
+      reader.readAsDataURL(file);
+    }
+    // Limpiar error si el usuario deselecciona archivo
+    if (errors.foto && !file) {
       setErrors(prev => ({
         ...prev,
         foto: ''
@@ -123,7 +147,7 @@ export default function GastoForm({ onClose, gastoEditar = null }) {
         monto: parseFloat(formData.monto),
         fecha: formData.fecha,
         paraQuienes: formData.paraQuienes,
-        foto: formData.foto ? formData.foto.name : null
+        foto: formData.foto || null // Data URL o null
       };
 
       // Verificar si estamos editando o agregando

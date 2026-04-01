@@ -1,9 +1,35 @@
+/* ============================================
+   FORM BASE STYLES - Reutilizable
+   ============================================ */
+
+/* Modal Base */
+.modal-overlay,
+.confirmation-dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  padding: 0;
+  margin: 0;
+}
+
+.confirmation-dialog-overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 2000;
+}
+
 /* Form Container */
 .form-container {
   max-width: 600px;
-  max-height: 400px;
-  margin: 2rem auto;
-  padding: 2rem;
+  margin: 0 auto;
+  padding: 1rem;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
   background-color: #f9f9f9;
@@ -23,7 +49,6 @@
   gap: 1rem;
 }
 
-/* Individual Input Containers */
 .input-monto,
 .input-nombre,
 .input-item,
@@ -46,22 +71,29 @@ label {
 input[type="text"],
 input[type="number"],
 input[type="date"],
-input[type="file"] {
+input[type="file"],
+select {
   padding: 0.75rem;
   border: 1px solid #ddd;
   border-radius: 4px;
   font-size: 1rem;
   font-family: inherit;
   transition: border-color 0.3s ease;
+  background-color: white;
 }
 
 input[type="text"]:focus,
 input[type="number"]:focus,
 input[type="date"]:focus,
-input[type="file"]:focus {
+input[type="file"]:focus,
+select:focus {
   outline: none;
   border-color: #4CAF50;
   box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+}
+
+select:hover {
+  border-color: #999;
 }
 
 /* Checkboxes */
@@ -122,24 +154,125 @@ input[type="checkbox"] {
   border-top: 1px solid #eee;
 }
 
+/* Confirmation Dialog */
+.confirmation-dialog {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.confirmation-dialog h2 {
+  margin-top: 0;
+  color: #4CAF50;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.confirmation-dialog p {
+  color: #666;
+  font-size: 1rem;
+  margin: 0.75rem 0;
+  line-height: 1.5;
+}
+
+.confirmation-question {
+  font-weight: 600;
+  color: #333;
+  margin-top: 1rem !important;
+  margin-bottom: 1.5rem !important;
+}
+
+.confirmation-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.confirmation-buttons .btn {
+  flex: 1;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-yes {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.btn-yes:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
+}
+
+.btn-no {
+  background-color: #f44336;
+  color: white;
+}
+
+.btn-no:hover {
+  background-color: #da190b;
+  transform: scale(1.05);
+}
+
 /* Disabled State */
 button:disabled,
-input:disabled {
+input:disabled,
+select:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
 
-/* Responsive */
+/* ============================================
+   RESPONSIVE
+   ============================================ */
 @media (max-width: 768px) {
   .form-container {
     padding: 0.75rem;
-    margin: 0.5rem auto;
+    margin: 0 auto;
+    box-sizing: border-box;
   }
 
   input[type="text"],
   input[type="number"],
   input[type="date"],
-  input[type="file"] {
+  input[type="file"],
+  select {
     font-size: 16px; /* Prevents zoom on mobile */
+    box-sizing: border-box;
+    width: 100%;
+  }
+}
+
+@media (max-width: 500px) {
+  .modal-content,
+  .modal-overlay {
+    max-height: 100vh;
+  }
+
+  .form-container {
+    padding: 0.5rem;
+    box-sizing: border-box;
   }
 }

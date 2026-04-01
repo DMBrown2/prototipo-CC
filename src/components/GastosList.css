@@ -272,6 +272,59 @@
     text-align: center;
   }
 
+  .gasto-detail-item {
+    gap: 0.35rem;
+    padding: 0.75rem;
+    align-items: center;
+  }
+
+  .gasto-info {
+    flex: 1 1 auto;
+    gap: 0.1rem;
+  }
+
+  .gasto-usuario {
+    font-size: 0.9rem;
+  }
+
+  .gasto-descripcion {
+    font-size: 0.8rem;
+  }
+
+  .gasto-fecha {
+    font-size: 0.7rem;
+  }
+
+  .gasto-monto {
+    font-size: 0.95rem;
+    min-width: 70px;
+    text-align: right;
+    padding: 0;
+    flex-shrink: 0;
+  }
+
+  .btn-ver-foto {
+    min-width: 32px;
+    min-height: 32px;
+    padding: 0.25rem;
+    font-size: 0.85rem;
+    margin-left: 0;
+    flex-shrink: 0;
+  }
+
+  .gasto-actions {
+    gap: 0.2rem;
+    margin-left: 0;
+    flex-shrink: 0;
+  }
+
+  .btn-action {
+    min-width: 32px;
+    min-height: 32px;
+    padding: 0.25rem;
+    font-size: 0.8rem;
+  }
+
   .foto-modal-content {
     padding: 1.5rem;
     width: 95%;
